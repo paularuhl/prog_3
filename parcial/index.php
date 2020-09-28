@@ -106,6 +106,8 @@ switch ($method) {
                 $rta = Usuario::login($_POST['email'],  $_POST['clave']);
                 if ($rta != false) {
                     echo $rta;
+                } else {
+                    echo "Usuario o clave Incorrectos";
                 }
                 break;
             case '/materia':

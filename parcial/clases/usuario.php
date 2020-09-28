@@ -64,7 +64,7 @@ class Usuario extends FileManager
 
     public static function isAdmin($token){
         try{
-            $decoded = JWT::decode($token, "pro3-parcial", array('HS256'));
+            JWT::decode($token, "pro3-parcial", array('HS256'));
             return true;
         }
         catch(Exception $ex){
