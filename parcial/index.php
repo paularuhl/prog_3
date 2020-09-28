@@ -2,14 +2,14 @@
 require __DIR__ . '\vendor\autoload.php';
 include_once __DIR__ . '.\vendor\Firebase\php-jwt\src\JWK.php';
 
-use \Firebase\JWT\JWT;
+// use \Firebase\JWT\JWT;
+// $key = "pro3-parcial";
 
 require_once './clases/profesor.php';
 require_once './clases/asignacion.php';
 require_once './clases/materia.php';
 require_once './clases/usuario.php';
 
-$key = "pro3-parcial";
 
 
 

@@ -19,9 +19,9 @@ class Usuario extends FileManager
 
     public static function isUniqueAndSet($user)
     {
-        //RTA ES UN ARRAY QUE TIENE UN CAMPO QUE ES FALSE POR DEFAULT
+        //RTA ES UN ARRAY QUE TIENE UN CAMPO QUE ES TRUE POR DEFAULT
         $rta = [true];
-        var_dump($user->_clave);
+
         if (
             isset($user->_email) && isset($user->_clave)
             && !empty($user->_clave) && !empty($user->_email)
@@ -31,14 +31,12 @@ class Usuario extends FileManager
 
                 if ($value->_email == $user->_email) {
                     //SI EL OBJETO SE REPITE ASIGNO MENSAJE AL SEGUNDO INDICE
-                    $rta[0] = false;
-                    $rta[1] = "Email repetido... No se guardó";
+                    $rta = [false, "Email repetido... No se guardó"];
                 }
             }
         } else {
             //SI ALGUN CAMPO ESTÁ VACÍO ASIGNO MENSAJE AL SEGUNDO INDICE
-            $rta[0] = false;
-            $rta[1] =  "No se permiten campos vacíos";
+            $rta = [false, "No se permiten campos vacíos"];
         }
 
         return $rta;
@@ -46,19 +44,21 @@ class Usuario extends FileManager
 
     public static function login($email, $clave)
     {
+        $encodeOk = false;
         $payload = array();
         $usuarios = Usuario::leerJson();
+        
         foreach ($usuarios as $user) {
             if ($user->_email == $email && password_verify($clave, $user->_clave)) {
                 $payload = array(
                     "email" => $email,
                     "clave" => $clave
                 );
+                $encodeOk = JWT::encode($payload, "pro3-parcial");
             }
-        break;
+            break;
         }
-        return JWT::encode($payload, "pro3-parcial");
-
+        return $encodeOk;
     }
 
     public static function isAdmin($token){
