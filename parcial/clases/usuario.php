@@ -47,16 +47,17 @@ class Usuario extends FileManager
         $encodeOk = false;
         $payload = array();
         $usuarios = Usuario::leerJson();
-        
+         
         foreach ($usuarios as $user) {
             if ($user->_email == $email && password_verify($clave, $user->_clave)) {
+               echo "ENTRO EN EL IF ";
                 $payload = array(
                     "email" => $email,
                     "clave" => $clave
                 );
                 $encodeOk = JWT::encode($payload, "pro3-parcial");
-            }
             break;
+            }
         }
         return $encodeOk;
     }
