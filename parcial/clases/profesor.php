@@ -28,14 +28,12 @@ class Profesor extends FileManager
             foreach ($profesores as $value) {
                 if ($value->_legajo == $profesor->_legajo) {
                     //SI EL OBJETO SE REPITE ASIGNO MENSAJE AL SEGUNDO INDICE
-                    $rta[0] = false;
-                    $rta[1] = "Legajo repetido... No se guardó";
+                    $rta = [false, "Legajo repetido... No se guardó"];
                 }
             }
         } else {
             //SI ALGUN CAMPO ESTÁ VACÍO ASIGNO MENSAJE AL SEGUNDO INDICE
-            $rta[0] = false;
-            $rta[1] =  "No se permiten campos vacíos";
+            $rta = [false, "No se permiten campos vacíos"];
         }
 
         return $rta;

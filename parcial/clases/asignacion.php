@@ -36,14 +36,12 @@ class Asignacion extends FileManager
           && $asignacion->_turno == $value->_turno
         ) {
           //SI EL OBJETO SE REPITE ASIGNO MENSAJE AL SEGUNDO INDICE
-          $rta[0] = false;
-          $rta[1] = "Esta asignación está repetida... No se guardó";
+          $rta = [false, "Esta asignación está repetida... No se guardó"];
         }
       }
     } else {
       //SI ALGUN CAMPO ESTÁ VACÍO ASIGNO MENSAJE AL SEGUNDO INDICE
-      $rta[0] = false;
-      $rta[1] =  "No se permiten campos vacíos";
+      $rta = [false, "No se permiten campos vacíos"];
     }
     return $rta;
   }

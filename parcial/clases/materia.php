@@ -32,14 +32,12 @@ class Materia extends FileManager
             foreach ($materias as $value) {
                 if ($value->_nombre == $materia->_nombre) {
                     //SI EL OBJETO SE REPITE ASIGNO MENSAJE AL SEGUNDO INDICE
-                    $rta[0] = false;
-                    $rta[1] = "Esta materia está repetida... No se guardó";
+                    $rta = [false, "Esta materia está repetida... No se guardó"];
                 }
             }
         } else {
             //SI ALGUN CAMPO ESTÁ VACÍO ASIGNO MENSAJE AL SEGUNDO INDICE
-            $rta[0] = false;
-            $rta[1] =  "No se permiten campos vacíos";
+            $rta = [false, "No se permiten campos vacíos"];
         }
         return $rta;
     }
