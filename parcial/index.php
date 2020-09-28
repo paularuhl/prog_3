@@ -43,7 +43,7 @@ switch ($method) {
 
                     $materias = Materia::leerJson();
                     echo "MATERIAS: <br>";
-                    foreach ($lista as $item) {
+                    foreach ($materias as $item) {
                         echo $item . '<br>';
                     }
 
@@ -52,7 +52,7 @@ switch ($method) {
                     // 7. (GET) profesor: Muestra un listado con todas las profesores.
                     $profesores = Profesor::leerJson();
                     echo "PROFESORES: <br>";
-                    foreach ($lista as $item) {
+                    foreach ($profesores as $item) {
                         echo $item . '<br>';
                     }
                     break;
